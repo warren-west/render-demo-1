@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const { stat } = require('fs')
 const app = express()
 
 // middleware
@@ -33,6 +34,10 @@ app.get('/users/:id', (req, res) => {
     }
 
     return res.status(200).json({ id: req.params.id, name: "Warren" })
+})
+
+app.get('/cars', (req, res) => {
+    res.status(200).json([{ id: 1, color: 'blue'}, { id: 2, color: 'red'}, { id: 3, color: 'yellow'}])
 })
 
 const port = process.env.APP_PORT || 3000
